@@ -1,0 +1,14 @@
+<label class="switch">
+  <input
+    type="checkbox"
+    id="togBtn"
+    [checked]="state ? 'checked' : ''"
+    (change)="updateState()"
+  />
+  <div class="slider round">
+    <!--ADDED HTML -->
+    <span class="on">ON</span>
+    <span class="off">OFF</span>
+    <!--END-->
+  </div>
+</label>

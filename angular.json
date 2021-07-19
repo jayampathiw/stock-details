@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "stock-details"
+    }
+  },
+  "defaultProject": "stock-details",
+  "cli": {
+    "analytics": false
+  }
 }

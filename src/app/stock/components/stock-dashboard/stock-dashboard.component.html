@@ -1,0 +1,46 @@
+<h3>Stock Dashboard</h3>
+<div class="main-content" *ngIf="stockData$ | async as stockData">
+  <ng-container *ngFor="let stock of stockData">
+    <section
+      class="item"
+      [ngClass]="{
+        disabled: !stock.isActive,
+        red: stock.isActive && stock.closePrice - stock.openPrice < 0,
+        default: stock.isActive && stock.closePrice - stock.openPrice >= 0
+      }"
+    >
+      <div class="title">{{ stock.title }}</div>
+      <div class="close-price">{{ stock.closePrice | currency }}</div>
+      <div class="price-def">
+        {{ stock.closePrice - stock.openPrice | currency }}
+      </div>
+      <div class="open-price">({{ stock.openPrice | currency }})</div>
+
+      <div class="time">
+        <div class="trade-title">Trade time</div>
+        <div class="trade-time">
+          {{ stock.lastTradeTime | date: "h:mm:ss a" }}
+        </div>
+      </div>
+      <div class="avg">
+        <div class="avg-title"></div>
+        <div class="avg-heigh">
+          <span>Avg Highest: </span>{{ stock.highPrice | currency }}
+        </div>
+        <div class="avg-low">
+          <span>Avg Lowest: </span>{{ stock.lowPrice | currency }}
+        </div>
+      </div>
+      <div class="toggle">
+        <toggle-button
+          [state]="stock.isActive"
+          [id]="stock.id"
+          (updateToggleState)="updateStockState($event)"
+        ></toggle-button>
+      </div>
+    </section>
+  </ng-container>
+  <ng-container *ngIf="stockData.length == 0">
+    <div class="no-data">No data available.</div>
+  </ng-container>
+</div>

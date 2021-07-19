@@ -1,0 +1,89 @@
+@mixin center-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+
+  .item {
+    @include center-align;
+    flex-direction: column;
+
+    font-size: 1rem;
+    font-weight: lighter;
+
+    color: #174069;
+
+    height: 18rem;
+    width: 9rem;
+    margin: 1rem;
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding-bottom: 0.5rem;
+    }
+    .close-price {
+      font-size: 1rem;
+      font-weight: 800;
+      padding-bottom: 0.5rem;
+    }
+    .price-def {
+      font-size: 0.6rem;
+    }
+    .open-price {
+      font-size: 0.8rem;
+      padding-bottom: 0.5rem;
+    }
+    .time {
+      @include center-align;
+      flex-direction: column;
+      padding-bottom: 0.5rem;
+      font-size: 0.8rem;
+      .trade-title {
+        font-weight: bold;
+      }
+      .trade-time {
+        font-weight: 400;
+      }
+    }
+    .avg {
+      @include center-align;
+      flex-direction: column;
+      padding-bottom: 0.5rem;
+      font-size: 0.6rem;
+      .avg-title {
+        font-weight: bold;
+      }
+    }
+    .toggle {
+      padding-top: 0.7rem;
+    }
+  }
+  .disabled {
+    background-color: #ecf0f1;
+  }
+  .default {
+    background-color: #2ecc71;
+  }
+  .red {
+    background-color: #e74c3c;
+  }
+}
+
+@media screen and (max-width: 35rem) {
+  .main-content {
+    flex-direction: column;
+    .item {
+      height: 12rem;
+      .time {
+        display: none;
+      }
+      .avg {
+        display: none;
+      }
+    }
+  }
+}
