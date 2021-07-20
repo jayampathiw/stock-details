@@ -71,6 +71,11 @@
   .red {
     background-color: #e74c3c;
   }
+  .no-data {
+    padding: 1rem;
+    background-color: #00bcd4;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 35rem) {
