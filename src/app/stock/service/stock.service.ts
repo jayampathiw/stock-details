@@ -13,6 +13,7 @@ import { Stock } from '../model/stock.model';
   providedIn: 'root',
 })
 export class StockService {
+  //Mock data for stock
   allStockData$: Observable<Stock[]> = of([
     apple_stock,
     alphabet_stock,
@@ -20,10 +21,11 @@ export class StockService {
     tesla_stock,
   ]);
 
+  //Handles the toggle button functionality
   updateStockState = new BehaviorSubject<string>('-1');
-
   updateStockState$ = this.updateStockState.asObservable();
 
+  //combines the stock and user action streams and display the filtered data.
   stockData$ = combineLatest([this.allStockData$, this.updateStockState$]).pipe(
     map(([allStockData, updatedStockId]) => {
       return allStockData.map((data) => {
@@ -36,7 +38,12 @@ export class StockService {
 
   constructor() {}
 
-  updateStock(data: string) {
-    this.updateStockState.next(data);
+  /**
+   * Updates the stock information from the emitted stock id.
+   *
+   * @param id stock id
+   */
+  updateStock(id: string) {
+    this.updateStockState.next(id);
   }
 }

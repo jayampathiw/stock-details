@@ -10,6 +10,7 @@ import { StockService } from '../../service/stock.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StockDashboardComponent implements OnInit {
+  //Holds all the updated stock data
   stockData$: Observable<Stock[]>;
 
   constructor(private stockService: StockService) {}
@@ -18,6 +19,11 @@ export class StockDashboardComponent implements OnInit {
     this.stockData$ = this.stockService.stockData$;
   }
 
+  /**
+   * Update the service with the emitted stock id.
+   *
+   * @param id  updated stock id
+   */
   updateStockState(id: string): void {
     this.stockService.updateStock(id);
   }

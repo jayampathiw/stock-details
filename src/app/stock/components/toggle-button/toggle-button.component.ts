@@ -13,7 +13,7 @@ import {
   styleUrls: ['./toggle-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToggleButtonComponent implements OnInit {
+export class ToggleButtonComponent {
   @Input() state: boolean = false;
 
   @Input() id: string;
@@ -22,8 +22,9 @@ export class ToggleButtonComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
-
+  /**
+   * emits the toggle stock id
+   */
   updateState(): void {
     this.updateToggleState.emit(this.id);
   }
